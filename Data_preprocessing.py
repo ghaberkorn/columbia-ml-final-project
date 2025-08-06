@@ -35,7 +35,7 @@ def get_data():
     cleaned_falseDF['subject'] = cleaned_falseDF['subject'].str.lower()
 
     # Filter out filler words, 'the', 'a', 'an', 'and', 'or', 'but'
-    filler_words = ['the', 'a', 'an']
+    filler_words = ['the', 'a', 'an', 'and', 'or', 'but']
 
     def remove_filler(text):
         return ' '.join([word for word in text.split() if word.lower() not in filler_words])
