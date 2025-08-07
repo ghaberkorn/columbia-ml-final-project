@@ -58,8 +58,21 @@ def get_data():
     # split into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+    # initialize an rng
+    rng = np.random.default_rng(seed=42)
+    # generate randomized indices
+    indices = rng.permutation(len(X))
+    # apply to dataset
+    X_train_shuffled = X_train[indices]
+    y_train_shuffled = y_train[indices]
+
+    X_test_shuffled = X_test[indices]
+    y_test_shuffled = y_test[indices]
+
+    
+
     # return data
-    return X_train, X_test, y_train, y_test
+    return X_train_shuffled, X_test_shuffled, y_train_shuffled, y_test_shuffled
 
 
 
