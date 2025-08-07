@@ -59,12 +59,14 @@ def get_data():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # initialize an rng
-    rng = np.random.default_rng(seed=42)
-    train_indices = rng.permutation(len(X_train))
+    train_rng = np.random.default_rng(seed=42)
+    test_rng = np.random.default_rng(seed = 35)
+    
+    train_indices = train_rng.permutation(len(X_train))
     X_train_shuffled = X_train.iloc[train_indices]
     y_train_shuffled = y_train[train_indices]
 
-    test_indices = rng.permutation(len(X_test))
+    test_indices = test_rng.permutation(len(X_test))
     X_test_shuffled = X_test.iloc[test_indices]
     y_test_shuffled = y_test[test_indices]
 
