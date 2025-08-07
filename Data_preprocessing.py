@@ -60,14 +60,13 @@ def get_data():
 
     # initialize an rng
     rng = np.random.default_rng(seed=42)
-    # generate randomized indices
-    indices = rng.permutation(len(y))
-    # apply to dataset
-    X_train_shuffled = X_train[indices]
-    y_train_shuffled = y_train[indices]
+    train_indices = rng.permutation(len(X_train))
+    X_train_shuffled = X_train.iloc[train_indices]
+    y_train_shuffled = y_train[train_indices]
 
-    X_test_shuffled = X_test[indices]
-    y_test_shuffled = y_test[indices]
+    test_indices = rng.permutation(len(X_test))
+    X_test_shuffled = X_test.iloc[test_indices]
+    y_test_shuffled = y_test[test_indices]
 
     
 
